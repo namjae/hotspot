@@ -79,6 +79,8 @@ ResultsPage::ResultsPage(PerfParser *parser, QWidget *parent)
             });
     ui->timeLineView->setSortingEnabled(true);
     ui->timeLineView->hide();
+    connect(timeLineDelegate, &TimeLineDelegate::filterByTime,
+            parser, &PerfParser::filterByTime);
 
     connect(ui->resultsTabWidget, &QTabWidget::currentChanged,
             this, [this, summaryTabIndex](int index) {
